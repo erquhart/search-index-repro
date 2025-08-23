@@ -2,39 +2,6 @@ import { v } from "convex/values";
 import { query, mutation, action } from "./_generated/server";
 import { api } from "./_generated/api";
 
-export const seed = mutation({
-  handler: async (ctx) => {
-    await ctx.db.insert("numbers", {
-      search: "search string",
-      text: "text string",
-      test: "test string",
-      value: 5,
-    });
-  },
-});
-
-export const search = query({
-  handler: async (ctx) => {
-    const result = await ctx.db
-      .query("numbers")
-      .withSearchIndex("search", (q) => {
-        return (
-          q
-            // search === "search string"
-            .search("search", "search string")
-            // text === "text string"
-            .eq("text", "nonsense")
-            // test === undefined
-            .eq("test", "nonsense")
-            // value === 5
-            .eq("value", 5)
-        );
-      })
-      .collect();
-    console.log("result", result);
-  },
-});
-
 // Write your Convex functions in any file inside this directory (`convex`).
 // See https://docs.convex.dev/functions for more.
 

@@ -8,10 +8,10 @@
     "dev:frontend": "vite --open",
     "dev:backend": "convex dev",
     "predev": "convex dev --until-success && convex dashboard",
-    "seed": "convex run myFunctions:seed",
     "build": "tsc -b && vite build",
     "lint": "tsc && eslint .  --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed": "convex import --replace-all --table documents --format jsonLines /dev/null -y && convex run search:seed"
   },
   "dependencies": {
     "convex": "^1.23.0",

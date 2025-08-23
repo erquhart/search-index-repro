@@ -18,7 +18,7 @@ export default function App() {
 }
 
 function Content() {
-  useQuery(api.myFunctions.search, {});
+  useQuery(api.search.search, {});
   const { viewer, numbers } =
     useQuery(api.myFunctions.listNumbers, {
       count: 10,

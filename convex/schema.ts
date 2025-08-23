@@ -7,12 +7,15 @@ import { v } from "convex/values";
 // The schema provides more precise TypeScript types.
 export default defineSchema({
   numbers: defineTable({
-    search: v.optional(v.string()),
-    text: v.optional(v.string()),
-    test: v.optional(v.string()),
     value: v.number(),
+  }),
+  documents: defineTable({
+    search: v.string(),
+    first: v.string(),
+    second: v.string(),
+    third: v.string(),
   }).searchIndex("search", {
     searchField: "search",
-    filterFields: ["text", "test", "value"],
+    filterFields: ["first", "second", "third"],
   }),
 });
